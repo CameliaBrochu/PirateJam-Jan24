@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://djs3dls4yjtag"]
+
+[ext_resource type="PackedScene" uid="uid://dvpipi2jiaif4" path="res://UI/GameUI.tscn" id="1_878yn"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUi" parent="CanvasLayer" instance=ExtResource("1_878yn")]
+size_flags_horizontal = 4
+size_flags_vertical = 0
