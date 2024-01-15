@@ -11,5 +11,4 @@ offset = Vector2(-552.85, 0)
 polygon = PackedVector2Array(-1, 2, 77, 62, 159, 32, 261, 161, 426, 161, 539, 257, 629, 104, 731, 171, 813, 81, 928, 80, 1006, 176, 1108, 176, 1108, 501, -1, 501)
 
 [node name="DynamicField" type="Polygon2D" parent="."]
-position = Vector2(550, 400)
 script = ExtResource("1_5qobd")
