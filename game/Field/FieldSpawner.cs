@@ -18,20 +18,29 @@ public partial class FieldSpawner : Polygon2D
 			samples.Add(i);
 		}
 
-		Array<Vector2> verts = new Array<Vector2>();
-		for(int i = 1; i < samples.Count; i++) {
-			verts.Add(new Vector2I(samples[i], 200));
-			verts.Add(new Vector2I(samples[i], sceneSize.Y));
+		Vector2[] verts = new Vector2[samples.Count + 1];
+		for(int i = 0; i < samples.Count; i+=2) {
+			GD.Print("[VERTGEN] (", i + 0, "); (", i + 1, ")");
+
+			int height = (int)FieldState.heightmap[System.Math.Min(i, FieldState.heightmap.Length - 1)];
+			verts[i + 0] = new Vector2I(samples[i], height);
+			verts[i + 1] = new Vector2I(samples[i], sceneSize.Y);
 		}
-		GD.Print("[POLY] count = ", verts.Count);
+		GD.Print("[POLY] count = ", verts.Length);
+		foreach (Vector2 v in verts) {
+			GD.Print("  - ", v);
+		}
 		
-		for (int i = 0; i < verts.Count - 2; i+=2) {
-			GD.Print(string.Format("[POLYs] ({0}); ({1}); ({2}); ({3})",
-						i, i+2, i+3, i+1));
+		Array<Array<int>> polys = new Array<Array<int>>();
+		for (int i = 0; i < verts.Length - 2; i+=2) {
+			polys.Add(new Array<int> { i + 0, i + 2, i + 3, i + 1 });
 		}
 
-		Array<Array<int>> polys = new Array<Array<int>>();
-		//this.Polygons = [];
+		foreach (Array<int> p in polys) {
+			GD.Print(p);
+		}
+		Polygon = verts;
+		Polygons = (Array)polys;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
