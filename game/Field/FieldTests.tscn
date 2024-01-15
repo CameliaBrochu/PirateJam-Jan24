@@ -11,7 +11,11 @@
 [node name="DynamicField" type="Polygon2D" parent="." node_paths=PackedStringArray("collision")]
 visible = false
 script = ExtResource("1_5qobd")
-collision = NodePath("")
+collision = NodePath("StaticBody2D/CollisionPolygon2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DynamicField"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DynamicField/StaticBody2D"]
 
 [node name="StaticField" type="Polygon2D" parent="."]
 position = Vector2(0, 125)

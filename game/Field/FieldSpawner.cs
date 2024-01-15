@@ -5,11 +5,18 @@ using game.Field;
 
 public partial class FieldSpawner : Polygon2D
 {
+	[Export] private CollisionPolygon2D collision;
 	static private Vector2I sceneSize = new Vector2I(1154, 648);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (collision != null) {
+			GD.Print("[FIELD-SPAWN] Got a valid collision : ", collision);
+		} else {
+			GD.Print("[FIELD-SPAWN] Got a invalid collision");
+		}
+
 		GD.Print(string.Format("[FIELD-SPAWN] screen dimensions: ({0}, {1})", sceneSize.X, sceneSize.Y));
 		int step = sceneSize.X / FieldState.heightmap.Length;
 
