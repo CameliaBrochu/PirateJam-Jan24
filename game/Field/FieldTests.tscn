@@ -1,14 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqtty32ddbs61"]
+[gd_scene load_steps=4 format=3 uid="uid://dqtty32ddbs61"]
 
 [ext_resource type="Script" path="res://Field/FieldSpawner.cs" id="1_5qobd"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpnf0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_77ic3"]
+
 [node name="FieldTests" type="Node2D"]
 
-[node name="StaticField" type="Polygon2D" parent="."]
+[node name="DynamicField" type="Polygon2D" parent="." node_paths=PackedStringArray("collision")]
 visible = false
-position = Vector2(570, 125)
-offset = Vector2(-552.85, 0)
+script = ExtResource("1_5qobd")
+collision = NodePath("")
+
+[node name="StaticField" type="Polygon2D" parent="."]
+position = Vector2(0, 125)
 polygon = PackedVector2Array(-1, 2, 77, 62, 159, 32, 261, 161, 426, 161, 539, 257, 629, 104, 731, 171, 813, 81, 928, 80, 1006, 176, 1108, 176, 1108, 501, -1, 501)
 
-[node name="DynamicField" type="Polygon2D" parent="."]
-script = ExtResource("1_5qobd")
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticField"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticField/StaticBody2D"]
+polygon = PackedVector2Array(-1, 2, 77, 62, 159, 32, 261, 161, 426, 161, 539, 257, 629, 104, 731, 171, 813, 81, 928, 80, 1006, 176, 1108, 176, 1108, 501, -1, 501)
+
+[node name="Capsule" type="RigidBody2D" parent="."]
+position = Vector2(122, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capsule"]
+position = Vector2(500, 91)
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_dpnf0")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Capsule/CollisionShape2D"]
+scale = Vector2(17.94, 14.33)
+mesh = SubResource("CapsuleMesh_77ic3")
