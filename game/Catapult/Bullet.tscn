@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgcn3hwdj55by"]
+
+[ext_resource type="Script" path="res://Catapult/Bullet.cs" id="1_g1wef"]
+[ext_resource type="Texture2D" uid="uid://dvk0nxfjq2c3o" path="res://Catapult/tank_bullet6.png" id="1_vg7hh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8b1u"]
+radius = 8.0
+
+[node name="Bullet" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_g1wef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b8b1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(0.5, 0)
+scale = Vector2(1, 0.84375)
+texture = ExtResource("1_vg7hh")
