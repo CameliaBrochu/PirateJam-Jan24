@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4aaxfqi73ej5"]
+[gd_scene load_steps=6 format=3 uid="uid://4aaxfqi73ej5"]
 
 [ext_resource type="Texture2D" uid="uid://byi4xcmyewc8y" path="res://Catapult/tanks_tankGreen1.png" id="1_xqvvg"]
 [ext_resource type="Texture2D" uid="uid://cserq6om7mgj8" path="res://Catapult/tank_arrowFull.png" id="2_5xk40"]
+[ext_resource type="Script" path="res://Catapult/Catapult.cs" id="2_dn10k"]
 [ext_resource type="Script" path="res://Catapult/Aim.cs" id="3_o54aa"]
 [ext_resource type="Script" path="res://Catapult/AimSlider.cs" id="4_l13k8"]
 
@@ -10,6 +11,7 @@
 [node name="Catapult" type="Sprite2D" parent="."]
 position = Vector2(389, 253)
 texture = ExtResource("1_xqvvg")
+script = ExtResource("2_dn10k")
 
 [node name="Aim" type="Sprite2D" parent="Catapult"]
 position = Vector2(-3, -17)
@@ -17,6 +19,9 @@ scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_5xk40")
 offset = Vector2(200, 0)
 script = ExtResource("3_o54aa")
+
+[node name="Marker2D" type="Marker2D" parent="Catapult"]
+position = Vector2(-3, -18)
 
 [node name="AimSlider" type="HSlider" parent="."]
 offset_left = 352.0
