@@ -17,27 +17,29 @@ public partial class FieldSpawner : Polygon2D
 			GD.Print("[FIELD-SPAWN] Got a invalid collision");
 		}
 
-		GD.Print(string.Format("[FIELD-SPAWN] screen dimensions: ({0}, {1})", sceneSize.X, sceneSize.Y));
 		int step = sceneSize.X / FieldState.heightmap.Length;
-
+		GD.Print("[FIELD-SPAWN] heightmap length = ", FieldState.heightmap.Length);
+		GD.Print("[FIELD-SPAWN] step size = ", step);
 		Array<int> samples = new Array<int>();
-		for(int i = 0; i <= sceneSize.X; i += step) {
+		for(int i = 5; i <= sceneSize.X; i += step) {
+			GD.Print("FIELD-SPAWN] current sample = ", i);
 			samples.Add(i);
 		}
 
-		Vector2[] verts = new Vector2[samples.Count + 1];
-		for(int i = 0; i < samples.Count; i+=2) {
-			GD.Print("[VERTGEN] (", i + 0, "); (", i + 1, ")");
+		Vector2[] verts = new Vector2[samples.Count * 2];
+		for(int i = 0; i < samples.Count; i++) {
+			int height = (int)FieldState.heightmap[i];
+			GD.Print("[VERTGEN] (", i ,") -> ", height);
 
-			int height = (int)FieldState.heightmap[System.Math.Min(i, FieldState.heightmap.Length - 1)];
-			verts[i + 0] = new Vector2I(samples[i], height);
-			verts[i + 1] = new Vector2I(samples[i], sceneSize.Y);
+			GD.Print(string.Format("[OFFSETS] {0}, {1}", i*2, (i*2)+1));
+			verts[(i * 2) + 0] = new Vector2I(samples[i], height);
+			verts[(i * 2) + 1] = new Vector2I(samples[i], sceneSize.Y);
 		}
 		GD.Print("[POLY] count = ", verts.Length);
 		foreach (Vector2 v in verts) {
 			GD.Print("  - ", v);
 		}
-		
+
 		Array<Array<int>> polys = new Array<Array<int>>();
 		for (int i = 0; i < verts.Length - 2; i+=2) {
 			polys.Add(new Array<int> { i + 0, i + 2, i + 3, i + 1 });
