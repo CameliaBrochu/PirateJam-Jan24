@@ -5,7 +5,7 @@ namespace game.Field {
 
     public partial class FieldState : Resource
     {
-        public static float[] heightmap = {
+        public static float[] map = {
             450,
             290,
             345,
@@ -18,5 +18,4 @@ namespace game.Field {
             525,
         };
     }
-
 }
