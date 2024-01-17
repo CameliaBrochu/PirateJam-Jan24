@@ -27,6 +27,17 @@ public partial class FieldSpawner : Polygon2D
 			verts[(i * 2) + 1] = new Vector2I(samples[i], sceneSize.Y);
 		}
 		Polygon = verts;
+		
+		Vector2[] cverts = new Vector2[samples.Count * 2];
+		int idx = 0;
+		int j = 0;
+		for(idx = 0; idx < verts.Length; idx+=2) {
+			cverts[j++] = verts[idx];
+		}
+		for(idx-=1; idx >= 0; idx-=2) {
+			cverts[j++] = verts[idx];
+		}
+		collision.Polygon = cverts;
 
 		Array<Array<int>> polys = new Array<Array<int>>();
 		for (int i = 0; i < verts.Length - 2; i+=2) {
