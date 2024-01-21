@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmtwytrm3pw0t"]
+
+[ext_resource type="PackedScene" uid="uid://bgcn3hwdj55by" path="res://Catapult/Bullet.tscn" id="1_h421h"]
+[ext_resource type="Texture2D" uid="uid://ginu8s6jk68v" path="res://Bread/bread.png" id="2_2e0dn"]
+[ext_resource type="Script" path="res://Bread/Enemy.cs" id="2_5i4ff"]
+[ext_resource type="Script" path="res://Bread/SplutFX.cs" id="4_ixaon"]
+[ext_resource type="FontFile" uid="uid://b54vf12egft8q" path="res://UI/kenvector_future.ttf" id="4_vov6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xp52"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6qg87"]
+font = ExtResource("4_vov6p")
+font_size = 25
+font_color = Color(1, 1, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="EnemyTests" type="Node2D"]
+
+[node name="Bullet" parent="." instance=ExtResource("1_h421h")]
+position = Vector2(0, 200)
+
+[node name="Enemy" type="Area2D" parent="."]
+position = Vector2(800, 500)
+script = ExtResource("2_5i4ff")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2e0dn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2xp52")
+
+[node name="SplutFX" type="Node2D" parent="." node_paths=PackedStringArray("lbl")]
+position = Vector2(800, 500)
+script = ExtResource("4_ixaon")
+lbl = NodePath("SplutText")
+
+[node name="SplutText" type="Label" parent="SplutFX"]
+offset_top = -35.0
+offset_right = 126.0
+offset_bottom = -5.0
+rotation = 0.610865
+pivot_offset = Vector2(63, 15)
+text = "SPLUT !"
+label_settings = SubResource("LabelSettings_6qg87")
+horizontal_alignment = 1
+vertical_alignment = 1
