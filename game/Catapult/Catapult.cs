@@ -17,14 +17,6 @@ public partial class Catapult : Sprite2D
 	{
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		if (@event.IsActionPressed("ui_accept"))
-		{
-			this.Shoot();
-		}
-	}
-
 	private void Shoot()
 	{
 		Node bullet = this.bulletScene.Instantiate();
@@ -33,5 +25,11 @@ public partial class Catapult : Sprite2D
 
 		bullet.Set("position", this.GetNode<Marker2D>("Marker2D").Position);
 
+	}
+
+
+	private void OnFire()
+	{
+		this.Shoot();
 	}
 }
