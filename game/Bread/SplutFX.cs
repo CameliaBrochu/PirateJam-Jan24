@@ -5,6 +5,7 @@ public partial class SplutFX : Node2D
 	[Export] private Label lbl;
 	[Export] private Curve curve0;
 	[Export] private float maxTime = 1.0f;
+	[Export] private float maxXOffset = -50.0f;
 
 	private bool isRunning = false;
 	private ulong startTime = 0;
@@ -25,6 +26,7 @@ public partial class SplutFX : Node2D
 			float val = curve0.Sample(p);
 			//GD.Print("e = ", elapsed, " p = ", p, " val = ", val);
 			lbl.Set("scale", new Vector2(val, val));
+			lbl.Set("position", new Vector2(0, val * maxXOffset));
 
 			if (elapsed >= 1000 * maxTime) 
 			{
