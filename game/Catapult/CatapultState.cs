@@ -9,5 +9,6 @@ namespace game.Catapult
     internal class CatapultState
     {
         static public float aimAngle;
+        static public bool charging = false;
     }
 }

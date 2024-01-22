@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4aaxfqi73ej5"]
+[gd_scene load_steps=12 format=3 uid="uid://4aaxfqi73ej5"]
 
 [ext_resource type="Texture2D" uid="uid://byi4xcmyewc8y" path="res://Catapult/tanks_tankGreen1.png" id="1_xqvvg"]
 [ext_resource type="Texture2D" uid="uid://cserq6om7mgj8" path="res://Catapult/tank_arrowFull.png" id="2_5xk40"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://cnmh6gkh5ruqc" path="res://Catapult/red_button08.png" id="6_5n234"]
 [ext_resource type="Script" path="res://Catapult/FireBtn.cs" id="6_upi4g"]
 [ext_resource type="Texture2D" uid="uid://bfs5xo0unleot" path="res://Catapult/red_button09.png" id="7_558as"]
+[ext_resource type="Script" path="res://Catapult/PowerMeter.cs" id="9_81tm6"]
+
+[sub_resource type="Gradient" id="Gradient_rorg0"]
+offsets = PackedFloat32Array(0, 0.522436, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0.958188, 0.815138, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ex35k"]
+gradient = SubResource("Gradient_rorg0")
 
 [node name="Catapult" type="Node2D"]
 
@@ -42,5 +50,14 @@ offset_bottom = 400.0
 texture_normal = ExtResource("6_5n234")
 texture_pressed = ExtResource("7_558as")
 script = ExtResource("6_upi4g")
+
+[node name="PowerMeter" type="TextureRect" parent="."]
+offset_left = 720.0
+offset_top = 354.0
+offset_right = 976.0
+offset_bottom = 394.0
+pivot_offset = Vector2(256, 0)
+texture = SubResource("GradientTexture1D_ex35k")
+script = ExtResource("9_81tm6")
 
 [connection signal="Fire" from="FireBtn" to="Catapult" method="OnFire"]
