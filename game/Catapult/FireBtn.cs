@@ -4,6 +4,7 @@ using System;
 
 public partial class FireBtn : TextureButton
 {
+	private bool buttonReleased = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,8 +15,13 @@ public partial class FireBtn : TextureButton
 	public override void _Process(double delta)
 	{
 		if (this.ButtonPressed){
+			this.buttonReleased = true;
 			CatapultState.charging = true;
 		} else {
+			if(this.buttonReleased){
+				this.EmitFireSignal();
+				this.buttonReleased = false;
+			}
 			CatapultState.charging = false;
 		}
 	}
@@ -25,7 +31,7 @@ public partial class FireBtn : TextureButton
 
 	public override void _Pressed()
 	{
-		this.EmitFireSignal();
+		
 	}
 
 	private void EmitFireSignal()

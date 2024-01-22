@@ -11,8 +11,8 @@ public partial class Bullet : RigidBody2D
 		double radians = CatapultState.aimAngle * Math.PI / 180;
 
 		
-		double x = (Math.Cos(radians) * speed);
-		double y = (Math.Sin(radians) * speed);
+		double x = (Math.Cos(radians) * (speed * CatapultState.power));
+		double y = (Math.Sin(radians) * (speed * CatapultState.power));
 		this.ApplyCentralImpulse(new Vector2((float)x, (float)y));
 	}
 

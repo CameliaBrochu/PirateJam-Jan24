@@ -40,10 +40,13 @@ public partial class PowerMeter : TextureRect
 		}
 		else
 		{
-			this.darkMeter.Texture = null;
+			this.power = maxPower;
 		}
-
+		
+		CatapultState.power = this.power;
 		this.darkMeter.Set("position", new Vector2(this.Size.X - Math.Max(0, this.Size.X * (1 - power)), 0));
 		this.darkMeter.Set("size", new Vector2(Math.Max(0, this.Size.X * (1 - power)), this.Size.Y));
 	}
 }
+
+
