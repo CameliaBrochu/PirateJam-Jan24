@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvpipi2jiaif4"]
+[gd_scene load_steps=11 format=3 uid="uid://dvpipi2jiaif4"]
 
+[ext_resource type="Script" path="res://UI/GameUI.cs" id="1_peh7k"]
 [ext_resource type="FontFile" uid="uid://b54vf12egft8q" path="res://UI/kenvector_future.ttf" id="1_t55ql"]
+[ext_resource type="Script" path="res://UI/AimSlider.cs" id="2_irbvw"]
+[ext_resource type="Texture2D" uid="uid://cnmh6gkh5ruqc" path="res://UI/red_button08.png" id="3_x6np4"]
+[ext_resource type="Texture2D" uid="uid://bfs5xo0unleot" path="res://UI/red_button09.png" id="4_t5tm1"]
+[ext_resource type="Script" path="res://UI/FireBtn.cs" id="5_w4262"]
+[ext_resource type="Script" path="res://UI/PowerMeter.cs" id="6_j1g6a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2i25"]
 font = ExtResource("1_t55ql")
+
+[sub_resource type="Gradient" id="Gradient_rorg0"]
+offsets = PackedFloat32Array(0, 0.522436, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0.958188, 0.815138, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7tf41"]
+gradient = SubResource("Gradient_rorg0")
 
 [node name="GameUi" type="Control"]
 layout_mode = 3
@@ -12,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_peh7k")
 
 [node name="BG" type="Panel" parent="."]
 layout_mode = 1
@@ -33,3 +47,34 @@ grow_horizontal = 2
 text = "* Game UI Title *"
 label_settings = SubResource("LabelSettings_l2i25")
 horizontal_alignment = 1
+
+[node name="AimSlider" type="HSlider" parent="BG"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 64.0
+offset_right = 480.0
+offset_bottom = 80.0
+max_value = 90.0
+script = ExtResource("2_irbvw")
+
+[node name="FireBtn" type="TextureButton" parent="BG"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 52.0
+offset_right = 639.0
+offset_bottom = 101.0
+texture_normal = ExtResource("3_x6np4")
+texture_pressed = ExtResource("4_t5tm1")
+script = ExtResource("5_w4262")
+
+[node name="PowerMeter" type="TextureRect" parent="BG"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 55.0
+offset_right = 921.0
+offset_bottom = 95.0
+pivot_offset = Vector2(256, 0)
+texture = SubResource("GradientTexture1D_7tf41")
+script = ExtResource("6_j1g6a")
+
+[connection signal="button_up" from="BG/FireBtn" to="." method="OnFireBtnUp"]

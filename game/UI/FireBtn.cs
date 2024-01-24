@@ -19,23 +19,14 @@ public partial class FireBtn : TextureButton
 			CatapultState.charging = true;
 		} else {
 			if(this.buttonReleased){
-				this.EmitFireSignal();
 				this.buttonReleased = false;
 			}
 			CatapultState.charging = false;
 		}
 	}
 
-	[Godot.Signal]
-	public delegate void FireEventHandler();
-
 	public override void _Pressed()
 	{
 		
-	}
-
-	private void EmitFireSignal()
-	{
-		EmitSignal(SignalName.Fire);
 	}
 }

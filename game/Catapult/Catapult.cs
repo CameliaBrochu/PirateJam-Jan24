@@ -10,6 +10,8 @@ public partial class Catapult : Sprite2D
 		NodePath currentPath = GetPath();
 
 		this.bulletScene = GD.Load<PackedScene>("res://Catapult/Bullet.tscn");
+		var GameUi = GetTree().Root.GetNode("Main/CanvasLayer/GameUi");
+		GameUi.Connect("Fire", Callable.From(this.OnFire));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
