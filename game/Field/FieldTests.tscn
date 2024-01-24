@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqtty32ddbs61"]
+[gd_scene load_steps=2 format=3 uid="uid://dqtty32ddbs61"]
 
 [ext_resource type="Script" path="res://Field/FieldSpawner.cs" id="1_5qobd"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpnf0"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_77ic3"]
 
 [node name="FieldTests" type="Node2D"]
 
@@ -15,63 +11,3 @@ collision = NodePath("StaticBody2D/CollisionPolygon2D")
 [node name="StaticBody2D" type="StaticBody2D" parent="DynamicField"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DynamicField/StaticBody2D"]
-
-[node name="Capsule" type="RigidBody2D" parent="."]
-position = Vector2(-386, -3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capsule"]
-position = Vector2(500, 91)
-scale = Vector2(5, 5)
-shape = SubResource("CapsuleShape2D_dpnf0")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Capsule/CollisionShape2D"]
-scale = Vector2(17.94, 14.33)
-mesh = SubResource("CapsuleMesh_77ic3")
-
-[node name="Capsule2" type="RigidBody2D" parent="."]
-position = Vector2(-124, -3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capsule2"]
-position = Vector2(500, 91)
-scale = Vector2(5, 5)
-shape = SubResource("CapsuleShape2D_dpnf0")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Capsule2/CollisionShape2D"]
-scale = Vector2(17.94, 14.33)
-mesh = SubResource("CapsuleMesh_77ic3")
-
-[node name="Capsule3" type="RigidBody2D" parent="."]
-position = Vector2(139, -3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capsule3"]
-position = Vector2(500, 91)
-scale = Vector2(5, 5)
-shape = SubResource("CapsuleShape2D_dpnf0")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Capsule3/CollisionShape2D"]
-scale = Vector2(17.94, 14.33)
-mesh = SubResource("CapsuleMesh_77ic3")
-
-[node name="Capsule4" type="RigidBody2D" parent="."]
-position = Vector2(371, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capsule4"]
-position = Vector2(500, 91)
-scale = Vector2(5, 5)
-shape = SubResource("CapsuleShape2D_dpnf0")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Capsule4/CollisionShape2D"]
-scale = Vector2(17.94, 14.33)
-mesh = SubResource("CapsuleMesh_77ic3")
-
-[node name="Capsule5" type="RigidBody2D" parent="."]
-position = Vector2(603, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capsule5"]
-position = Vector2(500, 91)
-scale = Vector2(5, 5)
-shape = SubResource("CapsuleShape2D_dpnf0")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Capsule5/CollisionShape2D"]
-scale = Vector2(17.94, 14.33)
-mesh = SubResource("CapsuleMesh_77ic3")
