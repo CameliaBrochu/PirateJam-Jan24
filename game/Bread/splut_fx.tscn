@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ytxkc1kmd3b"]
+
+[ext_resource type="Script" path="res://Bread/SplutFX.cs" id="1_dkmlc"]
+[ext_resource type="FontFile" uid="uid://b54vf12egft8q" path="res://UI/kenvector_future.ttf" id="2_jaddp"]
+
+[sub_resource type="Curve" id="Curve_bsv7q"]
+_data = [Vector2(0, 0), 0.0, 2.75, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_ursjb"]
+font = ExtResource("2_jaddp")
+font_size = 25
+font_color = Color(1, 1, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SplutFX" type="Node2D" node_paths=PackedStringArray("lbl")]
+position = Vector2(800, 500)
+script = ExtResource("1_dkmlc")
+lbl = NodePath("SplutText")
+curve0 = SubResource("Curve_bsv7q")
+maxTime = 0.5
+maxXOffset = -100.0
+
+[node name="SplutText" type="Label" parent="."]
+offset_right = 126.0
+offset_bottom = 29.0
+rotation = 0.610865
+pivot_offset = Vector2(25, 12)
+size_flags_vertical = 1
+text = "SPLUT !"
+label_settings = SubResource("LabelSettings_ursjb")
