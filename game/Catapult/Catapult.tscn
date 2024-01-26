@@ -8,14 +8,14 @@
 [ext_resource type="Script" path="res://Catapult/Canon.cs" id="4_oaenr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xo16"]
-size = Vector2(40, 62)
+size = Vector2(32.9999, 62.0001)
 
 [node name="Catapult" type="Node2D"]
 
 [node name="CharacterBody2D" type="RigidBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(34, 28)
+position = Vector2(34, 26.5001)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_1xo16")
 
