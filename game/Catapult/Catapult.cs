@@ -25,7 +25,7 @@ public partial class Catapult : Sprite2D
 
 		this.AddChild(bullet);
 
-		bullet.Set("position", this.GetNode<Marker2D>("Marker2D").Position);
+		bullet.Set("global_position", this.GetNode<Marker2D>("Canon/Marker2D").GlobalPosition);
 
 	}
 

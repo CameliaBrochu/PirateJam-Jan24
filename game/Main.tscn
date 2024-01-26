@@ -13,7 +13,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="Catapult" parent="." instance=ExtResource("2_wmugv")]
-position = Vector2(90, 195)
+z_index = 10
+position = Vector2(49, 266)
 
 [node name="FieldTests" parent="." instance=ExtResource("3_4gedw")]
 position = Vector2(0, 2)

@@ -13,6 +13,7 @@ public partial class Bullet : RigidBody2D
 		double x = (Math.Cos(radians) * (speed * CatapultState.power));
 		double y = (Math.Sin(radians) * (speed * CatapultState.power));
 		this.ApplyCentralImpulse(new Vector2((float)x, (float)y));
+		this.AngularVelocity = 100.0f;
 
 		this.BodyEntered += OnContact;
 		this.ContactMonitor = true;
