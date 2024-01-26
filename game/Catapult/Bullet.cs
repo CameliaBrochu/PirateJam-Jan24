@@ -35,7 +35,7 @@ public partial class Bullet : RigidBody2D
 		Node parent = body.GetParent();
 		if (parent is FieldSpawner) {
 			//TODO: Find a way to play a VFX
-			this.QueueFree();
+			this.GetParent().QueueFree();
 		}
 		
 		//TODO: Add check to verify hits on bread
