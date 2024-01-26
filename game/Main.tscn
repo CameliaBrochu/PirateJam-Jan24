@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djs3dls4yjtag"]
+[gd_scene load_steps=5 format=3 uid="uid://djs3dls4yjtag"]
 
 [ext_resource type="PackedScene" uid="uid://dvpipi2jiaif4" path="res://UI/GameUI.tscn" id="1_878yn"]
 [ext_resource type="PackedScene" uid="uid://4aaxfqi73ej5" path="res://Catapult/Catapult.tscn" id="2_wmugv"]
 [ext_resource type="PackedScene" uid="uid://dqtty32ddbs61" path="res://Field/FieldTests.tscn" id="3_4gedw"]
+[ext_resource type="Script" path="res://TrailFX.cs" id="4_rrklo"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,3 +19,11 @@ position = Vector2(49, 266)
 
 [node name="FieldTests" parent="." instance=ExtResource("3_4gedw")]
 position = Vector2(0, 2)
+
+[node name="TrailFX" type="Node2D" parent="." node_paths=PackedStringArray("catapult", "lineRender")]
+script = ExtResource("4_rrklo")
+catapult = NodePath("../Catapult")
+lineRender = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="TrailFX"]
+width = 2.0
