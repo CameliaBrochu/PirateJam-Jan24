@@ -5,6 +5,7 @@
 [node name="FieldTests" type="Node2D"]
 
 [node name="DynamicField" type="Polygon2D" parent="." node_paths=PackedStringArray("collision")]
+color = Color(0.3255, 0.63, 0, 1)
 script = ExtResource("1_5qobd")
 collision = NodePath("StaticBody2D/CollisionPolygon2D")
 
