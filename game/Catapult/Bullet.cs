@@ -5,6 +5,9 @@ using System;
 public partial class Bullet : RigidBody2D
 {
 	private int speed = 1000;
+	[Export] private Sprite2D bullet;
+	[Export] private AnimatedSprite2D boom;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -18,6 +21,8 @@ public partial class Bullet : RigidBody2D
 		this.BodyEntered += OnContact;
 		this.ContactMonitor = true;
 		this.MaxContactsReported = 1;
+		
+		boom.AnimationFinished += OnExploded;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +32,7 @@ public partial class Bullet : RigidBody2D
 
 	public override void _ExitTree()
 	{
+		boom.AnimationFinished -= OnExploded;
 		this.BodyEntered -= OnContact;
 		base._ExitTree();
 	}
@@ -34,10 +40,17 @@ public partial class Bullet : RigidBody2D
 	private void OnContact(Node body) {
 		Node parent = body.GetParent();
 		if (parent is FieldSpawner) {
-			//TODO: Find a way to play a VFX
-			this.GetParent().QueueFree();
+			SetDeferred("freeze", true);
+			bullet.Visible = false;
+
+			boom.Visible = true;
+			boom.Play();
 		}
 		
 		//TODO: Add check to verify hits on bread
+	}
+	
+	private void OnExploded() {
+		this.GetParent().QueueFree();
 	}
 }

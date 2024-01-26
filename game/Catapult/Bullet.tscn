@@ -1,16 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgcn3hwdj55by"]
+[gd_scene load_steps=13 format=3 uid="uid://bgcn3hwdj55by"]
 
 [ext_resource type="Script" path="res://Catapult/Bullet.cs" id="1_g1wef"]
 [ext_resource type="Texture2D" uid="uid://dvk0nxfjq2c3o" path="res://Catapult/tank_bullet6.png" id="1_vg7hh"]
+[ext_resource type="Texture2D" uid="uid://ckpyk2qv0a5g8" path="res://Catapult/Sprites/tank_explosion1.png" id="3_am1ub"]
+[ext_resource type="Texture2D" uid="uid://etc7itdkmv82" path="res://Catapult/Sprites/tank_explosion2.png" id="4_nw4rr"]
+[ext_resource type="Texture2D" uid="uid://p6b5so38e3xp" path="res://Catapult/Sprites/tank_explosion3.png" id="5_6jaq1"]
+[ext_resource type="Texture2D" uid="uid://dhdmvm8h1ws8e" path="res://Catapult/Sprites/tank_explosion4.png" id="6_r67m0"]
+[ext_resource type="Texture2D" uid="uid://cjyhh1sbwxyu3" path="res://Catapult/Sprites/tank_explosion8.png" id="7_5nsa0"]
+[ext_resource type="Texture2D" uid="uid://b8p4ih64rrwg1" path="res://Catapult/Sprites/tank_explosion7.png" id="8_vglq7"]
+[ext_resource type="Texture2D" uid="uid://bby12a7qlktkb" path="res://Catapult/Sprites/tank_explosion11.png" id="9_88iqe"]
+[ext_resource type="Texture2D" uid="uid://b6i0jocri0cs3" path="res://Catapult/Sprites/tank_explosion10.png" id="10_vrj61"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8b1u"]
 radius = 5.0
 height = 18.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tldbh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_am1ub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nw4rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6jaq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r67m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5nsa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vglq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_88iqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vrj61")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
 [node name="Bullet" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="." node_paths=PackedStringArray("bullet", "boom")]
 script = ExtResource("1_g1wef")
+bullet = NodePath("Sprite2D")
+boom = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 rotation = 1.5708
@@ -21,3 +66,8 @@ position = Vector2(7.15256e-07, 0)
 scale = Vector2(0.648148, 0.546875)
 texture = ExtResource("1_vg7hh")
 flip_h = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+visible = false
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_tldbh")
