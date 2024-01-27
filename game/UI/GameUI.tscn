@@ -8,8 +8,9 @@
 [ext_resource type="Script" path="res://UI/FireBtn.cs" id="5_w4262"]
 [ext_resource type="Script" path="res://UI/PowerMeter.cs" id="6_j1g6a"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_l2i25"]
+[sub_resource type="LabelSettings" id="LabelSettings_wwlwg"]
 font = ExtResource("1_t55ql")
+font_size = 20
 
 [sub_resource type="Gradient" id="Gradient_rorg0"]
 offsets = PackedFloat32Array(0, 0.522436, 1)
@@ -37,16 +38,14 @@ offset_top = -123.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Title" type="Label" parent="BG"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 7.0
-offset_bottom = 25.0
-grow_horizontal = 2
-text = "* Game UI Title *"
-label_settings = SubResource("LabelSettings_l2i25")
-horizontal_alignment = 1
+[node name="AimLabel" type="Label" parent="BG"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 20.0
+offset_right = 447.0
+offset_bottom = 43.0
+text = "SHOT AIM"
+label_settings = SubResource("LabelSettings_wwlwg")
 
 [node name="AimSlider" type="HSlider" parent="BG"]
 layout_mode = 0
@@ -66,6 +65,15 @@ offset_bottom = 101.0
 texture_normal = ExtResource("3_x6np4")
 texture_pressed = ExtResource("4_t5tm1")
 script = ExtResource("5_w4262")
+
+[node name="PowerLabel" type="Label" parent="BG"]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 20.0
+offset_right = 870.0
+offset_bottom = 43.0
+text = "SHOT POWER"
+label_settings = SubResource("LabelSettings_wwlwg")
 
 [node name="PowerMeter" type="TextureRect" parent="BG"]
 layout_mode = 0
