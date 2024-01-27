@@ -6,6 +6,7 @@ public partial class Enemy : Area2D
 {
 	private bool isSplutted = false;
 	[Export] private AnimatedSprite2D splut;
+	[Export] private SplutFX fx;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -31,9 +32,9 @@ public partial class Enemy : Area2D
 
 	private void _HandleCollision(Node2D other)
 	{
-		string path = other.GetPath().ToString();
-		GD.Print("AYO, collision avec un boulett ! path = ", path);
+		//string path = other.GetPath().ToString();
+		//GD.Print("AYO, collision avec un boulett ! path = ", path);
 		isSplutted = true;
-
+		fx.ForcePlay();
 	}
 }

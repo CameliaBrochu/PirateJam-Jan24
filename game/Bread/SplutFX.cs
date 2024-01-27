@@ -43,6 +43,11 @@ public partial class SplutFX : Node2D
 
 		base._Input(@event);
 	}
+	
+	public void ForcePlay()
+	{
+		Setup();
+	}
 
 	private void Setup()
 	{

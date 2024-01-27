@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b51c6ewf5ri5o"]
+[gd_scene load_steps=11 format=3 uid="uid://b51c6ewf5ri5o"]
 
 [ext_resource type="Script" path="res://Bread/Enemy.cs" id="1_2b6le"]
 [ext_resource type="Texture2D" uid="uid://ginu8s6jk68v" path="res://Bread/bread.png" id="2_tiyog"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7oq4sja6i3c" path="res://Bread/Splut/splat02.png" id="5_vu6el"]
 [ext_resource type="Texture2D" uid="uid://bhn6l88807plw" path="res://Bread/Splut/splat03.png" id="6_p63x7"]
 [ext_resource type="Texture2D" uid="uid://cyivlsgguhtgd" path="res://Bread/Splut/splat04.png" id="7_w4oux"]
+[ext_resource type="PackedScene" uid="uid://c5ytxkc1kmd3b" path="res://Bread/splut_fx.tscn" id="8_1fsa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xp52"]
 
@@ -35,10 +36,11 @@ animations = [{
 
 [node name="RigidBody2D" type="RigidBody2D"]
 
-[node name="Enemy" type="Area2D" parent="." node_paths=PackedStringArray("splut")]
+[node name="Enemy" type="Area2D" parent="." node_paths=PackedStringArray("splut", "fx")]
 collision_mask = 2
 script = ExtResource("1_2b6le")
 splut = NodePath("../Splut")
+fx = NodePath("../SplutFX")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 scale = Vector2(2.5, 2.5)
@@ -57,3 +59,6 @@ speed_scale = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_2xp52")
+
+[node name="SplutFX" parent="." instance=ExtResource("8_1fsa6")]
+position = Vector2(0, 0)
