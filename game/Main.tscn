@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://djs3dls4yjtag"]
+[gd_scene load_steps=7 format=3 uid="uid://djs3dls4yjtag"]
 
 [ext_resource type="PackedScene" uid="uid://dvpipi2jiaif4" path="res://UI/GameUI.tscn" id="1_878yn"]
 [ext_resource type="PackedScene" uid="uid://4aaxfqi73ej5" path="res://Catapult/Catapult.tscn" id="2_wmugv"]
 [ext_resource type="PackedScene" uid="uid://dqtty32ddbs61" path="res://Field/FieldTests.tscn" id="3_4gedw"]
 [ext_resource type="Script" path="res://TrailFX.cs" id="4_rrklo"]
 [ext_resource type="PackedScene" uid="uid://b51c6ewf5ri5o" path="res://Bread/enemy.tscn" id="5_4npts"]
+[ext_resource type="AudioStream" uid="uid://nxd7o6p3nfbs" path="res://music/theme2.ogg" id="6_nwx4y"]
 
 [node name="Main" type="Node2D"]
 
@@ -31,3 +32,8 @@ width = 2.0
 
 [node name="Enemy" parent="." instance=ExtResource("5_4npts")]
 position = Vector2(794, 337)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nwx4y")
+volume_db = -20.0
+autoplay = true
